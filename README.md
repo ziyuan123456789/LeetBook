@@ -4,7 +4,7 @@
 
 ## 贪心
 局部最优解我觉得就是整体最优解,前一阵看有个什么贝叶斯思维,觉得跟这个很像
-### 力扣445:分发饼干
+### 445:分发饼干
 题目描述:
 假设你是一位很棒的家长，想要给你的孩子们一些小饼干。但是，每个孩子最多只能给一块饼干。
 对每个孩子 i，都有一个胃口值 g[i]，这是能让孩子们满足胃口的饼干的最小尺寸；并且每块饼干 j，都有一个尺寸 s[j] 。如果 s[j] >= g[i]，我们可以将这个饼干 j 分配给孩子 i ，这个孩子会得到满足。你的目标是满足尽可能多的孩子，并输出这个最大数值。
@@ -33,5 +33,28 @@ public int findContentChildren(int[] g, int[] s) {
 
     }
     return count;
+}
+```
+
+## 二叉树
+### 226. 翻转二叉树
+递归处理只需要处理好一个节点就可以自动应用到整棵树上,后续遍历可以拿到之前的数据因此功能应该是最强大的,所以默认就选择了后续遍历
+但是想想前序也是可以的
+```java
+public TreeNode invertTree(TreeNode root) {
+    fx(root);
+    return root;
+
+}
+
+public void fx(TreeNode root) {
+    if (root == null) {
+        return;
+    }
+    fx(root.left);
+    fx(root.right);
+    TreeNode temp = root.left;
+    root.left = root.right;
+    root.right = temp;
 }
 ```
